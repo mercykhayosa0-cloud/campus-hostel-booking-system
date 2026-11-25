@@ -28,11 +28,11 @@ A university hostel allocation system: student applications, fair room allocatio
 
 ## Running locally
 
-1. `pnpm install`
-2. Create `.env.development.local` with `DATABASE_URL` and `BETTER_AUTH_SECRET` (`openssl rand -base64 32`).
-3. Apply `db/migrations/0001_initial_schema.sql` to the database.
-4. `pnpm db:seed` loads demo halls, rooms, a semester and users.
-5. `pnpm dev`, then open http://localhost:3000.
+1. `npm install`
+2. Create `.env.development.local` (see `.env.example`) with `DATABASE_URL`, `BETTER_AUTH_SECRET` (`openssl rand -base64 32`), and `BETTER_AUTH_URL=http://localhost:3000`.
+3. Apply `db/migrations/0001_initial_schema.sql` and `db/migrations/0002_application_closed_and_early_vacation.sql` to the database.
+4. `npm run db:seed` loads demo halls, rooms, a semester and users.
+5. `npm run dev`, then open http://localhost:3000.
 
 ### Demo accounts (password `Hostel@2026`)
 
