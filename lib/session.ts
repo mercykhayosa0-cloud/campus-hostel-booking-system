@@ -1,7 +1,6 @@
 import 'server-only'
-import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { auth, type Role } from '@/lib/auth'
+import { getSessionUser, type Role } from '@/lib/auth'
 
 export type CurrentUser = {
   id: string
@@ -17,10 +16,7 @@ export const dashboardPathFor: Record<Role, string> = {
 }
 
 export async function getCurrentUser(): Promise<CurrentUser | null> {
-  const session = await auth.api.getSession({ headers: await headers() })
-  if (!session?.user) return null
-  const { id, name, email, role } = session.user
-  return { id, name, email, role: role as Role }
+  return getSessionUser()
 }
 
 /** Server-side authorization gate for pages and server actions. */

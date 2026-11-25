@@ -7,7 +7,7 @@ A university hostel allocation system: student applications, fair room allocatio
 - **Next.js 16 (App Router) + TypeScript**: UI and server in one project
 - **Neon PostgreSQL**: relational database with transactions (prevents double-booking a bed)
 - **Drizzle ORM**: type-safe queries
-- **Better Auth**: email + password login, hashed passwords, server-side sessions
+- **Neon Auth & Sessions**: email + password login (`scrypt` hashed passwords, HTTP-only session cookies stored in Neon PostgreSQL)
 
 ## Architecture (layers)
 
@@ -29,7 +29,7 @@ A university hostel allocation system: student applications, fair room allocatio
 ## Running locally
 
 1. `npm install`
-2. Create `.env.development.local` (see `.env.example`) with `DATABASE_URL`, `BETTER_AUTH_SECRET` (`openssl rand -base64 32`), and `BETTER_AUTH_URL=http://localhost:3000`.
+2. Create `.env.development.local` (see `.env.example`) with `DATABASE_URL`.
 3. Apply `db/migrations/0001_initial_schema.sql` and `db/migrations/0002_application_closed_and_early_vacation.sql` to the database.
 4. `npm run db:seed` loads demo halls, rooms, a semester and users.
 5. `npm run dev`, then open http://localhost:3000.

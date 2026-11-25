@@ -6,8 +6,8 @@
  * (emails ending in @demo.hostel). Never run it against real data.
  */
 import { randomUUID } from 'node:crypto'
-import { hashPassword } from 'better-auth/crypto'
 import { Pool } from 'pg'
+import { hashPassword } from '../lib/password'
 
 const DEMO_PASSWORD = 'Hostel@2026'
 

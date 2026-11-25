@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { LogOut } from 'lucide-react'
-import { authClient } from '@/lib/auth-client'
 import { Button } from '@/components/ui/button'
 
 export function SignOutButton() {
@@ -12,7 +11,7 @@ export function SignOutButton() {
 
   async function handleSignOut() {
     setIsPending(true)
-    await authClient.signOut()
+    await fetch('/api/auth/sign-out', { method: 'POST' })
     router.push('/sign-in')
     router.refresh()
   }
